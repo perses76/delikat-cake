@@ -1,0 +1,52 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Delikat - home page{% endblock %}
+{% block page_title %}Добро пожаловать!!!{% endblock %}
+
+{% block header %}
+<script type="text/javascript" src="{{STATIC_URL}}jcarousellite/jcarousellite_1.0.1.js"></script>
+<script type="text/javascript">
+$(function() {
+    $("#carusel").jCarouselLite({
+        btnNext: ".next",
+        btnPrev: ".prev",
+		auto: 3000,
+		speed: 1000,
+		visible: 1,
+    });
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+<div  id="carusel">
+	<ul>
+		<li><img  class="carusel-img" src="{{STATIC_URL}}images/carusel1.gif"/></li>
+		<li><img  class="carusel-img" src="{{STATIC_URL}}images/carusel2.gif"/></li>
+		<li><img  class="carusel-img" src="{{STATIC_URL}}images/carusel3.gif"/></li>
+		<li><img  class="carusel-img" src="{{STATIC_URL}}images/carusel4.gif"/></li>
+		<li><img  class="carusel-img" src="{{STATIC_URL}}images/carusel5.gif"/></li>
+	</ul>
+</div>
+<div class="welcometextbox">
+Классический торт представляет собой изделие из сладкого теста, обычно круглой формы, с фруктовой или шоколадной начинкой, украшенный розочками из сливочного крема. Правильный торт – это шедевр кондитерского искусства. С детства это изысканное лакомство непременно ассоциируется с неописуемым удовольствием, чувством праздника и капелькой волшебства. В галерее нашего сайта можно осуществить заказ тортов, отвечающих самым изысканным вкусам и потребностям. Галерея разделена тематически: свадебные торты, юбилейные торты, праздничные торты, корпоративные торты, торты для детей, новогодние торты и фото торты. В них представлены лишь некоторые наши  кондитерские изделия. Заказ тортов Вы можете осуществить On-line, заполнив простую и удобную форму на нашем сайте, либо позвонив нам по указанным телефонам и лично договорившись о всех нюансах. Торты на заказ в нашей компании – это быстро, комфортно и приятно!
+</div>
+
+<!--
+<button class="prev"><<</button>
+<button class="next">>></button>
+        
+<div class="carousel" style="width: 600px">
+    <ul>
+        <li><</li>
+        <li><img src="{{MEDIA_URL}}2.jpg"/></li>
+        <li><img src="{{MEDIA_URL}}3.jpg"/></li>
+        <li><img src="{{MEDIA_URL}}4.jpg"/></li>
+		<li><img src="{{MEDIA_URL}}5.jpg"/></li>
+    </ul>
+</div>
+-->
+{% endblock %}
+
+

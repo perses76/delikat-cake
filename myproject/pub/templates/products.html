@@ -1,0 +1,100 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block page_title %}Продукты{% endblock %}
+
+{% block header %}
+<script type="text/javascript" src="{{MEDIA_URL}}jlightbox/js/jquery.lightbox-0.5.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}jlightbox/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript">
+$(function() {
+	$('a.lightbox').lightBox({
+	overlayBgColor: '#FFF',
+	overlayOpacity: 0.6,
+	imageLoading: '{{MEDIA_URL}}jlightbox/images/lightbox-ico-loading.gif',
+	imageBtnClose: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-close.gif',
+	imageBtnPrev: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-prev.gif',
+	imageBtnNext: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-next.gif',
+	imageBlank: '{{MEDIA_URL}}jlightbox/images/lightbox-blank.gif',
+	containerResizeSpeed: 350,
+	txtImage: 'Imagem',
+	txtOf: 'de'
+   }
+	); // Select all links with lightbox class
+});
+
+
+</script>
+{% endblock %}
+
+{% block content %}
+<table width="100%" class="pager" border="0">
+	<tr>
+		<td align="center" width="10%">
+			{% if rows.has_previous %}
+				<a href="?page={{ rows.previous_page_number }}"><img src="{{MEDIA_URL}}images/go_left.png"/></a>
+			{% endif %}		
+		</td>
+		<td align="center" width="80%">
+		Page {{ rows.number }} of {{ rows.paginator.num_pages }}
+		</td>
+		<td align="center" width="10%">
+        {% if rows.has_next %}
+            <a href="?page={{ rows.next_page_number }}"><img src="{{MEDIA_URL}}images/go_right.png"/></a>
+        {% endif %}		
+		</td>
+	</tr>
+</table>
+
+<table width="100%">
+{% for row in rows.object_list %}
+	<tr>
+		{% for cell in row %}
+			<td>
+			{% if cell %}
+				<div>
+					<div class="itembox">
+						<div class="basketbox">
+							<a href="/makeorder/?pid={{ cell.id }}"/>
+							<img src="{{MEDIA_URL}}images/basket.png"/>
+							</a>
+						</div>
+						<a href="{{ cell.photo.url }}" class="lightbox">
+							<img class="thumbnail" src='{{ cell.photo.url_125x125 }}' alt='{{ cell.title_en }}' style="width: 100px; height: 100px"/>
+						</a>
+					</div>
+					<div class="itemtitle">
+						{{ cell.title_ru }}
+					</div>
+				</div>
+			{% else %}
+				&nbsp;
+			{% endif %}
+		</td>
+		{% endfor %}
+	</tr>
+{% endfor %}
+</table>
+
+<table width="100%" class="pager" border="0">
+	<tr>
+		<td align="center" width="10%">
+			{% if rows.has_previous %}
+				<a href="?page={{ rows.previous_page_number }}"><img src="{{MEDIA_URL}}images/go_left.png"/></a>
+			{% endif %}		
+		</td>
+		<td align="center" width="80%">
+		Page {{ rows.number }} of {{ rows.paginator.num_pages }}
+		</td>
+		<td align="center" width="10%">
+        {% if rows.has_next %}
+            <a href="?page={{ rows.next_page_number }}"><img src="{{MEDIA_URL}}images/go_right.png"/></a>
+        {% endif %}		
+		</td>
+	</tr>
+</table>
+
+{% endblock %}
+
+
