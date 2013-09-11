@@ -1,0 +1,75 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Delikat - About us{% endblock %}
+
+{% block page_title %}О нас{% endblock %}
+{% block header %}
+<style type="text/css">
+  #map_canvas { height: 300px; width: 300px; margin: 20px;}
+</style>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+	$(function() {
+		var latlng = new google.maps.LatLng(46.850859, 29.644289);
+		var myOptions = {
+		  zoom: 10,
+		  center: latlng,
+		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+		});
+		var contentString = '<div>'+
+			'<div><b>Деликат</b></div>'+
+			'<div>р-к "Комсомольский"<br/>г. Тирасполь</div>'+
+			'<div>тел: +37353336946</div>'+
+			'<div>факс: +37353336946</div>'+
+			'</div>';
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
+		google.maps.event.addListener(marker, 'click', function() {
+		  infowindow.open(map,marker);
+		});		
+
+
+	});
+	//http://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=Tiraspol&sll=37.0625,-95.677068&sspn=38.775203,93.076172&ie=UTF8&hq=&hnear=Tiraspol,+Moldova&ll=46.850859,29.644289&spn=0.032754,0.090895&z=14
+
+</script>
+{% endblock %}
+
+{% block content %}
+
+<table>
+	<tr>
+		<td valign="top">
+			<div>
+			Осцилло́граф (лат. oscillo — качаюсь + греч. γραφω  — пишу) — прибор, предназначенный 
+			для исследования электрических сигналов во временно́й области путём визуального наблюдения графика 
+			сигнала на экране либо записанного на фотоленте, а также для измерения амплитудных и временны́х параметров 
+			сигнала по форме графика. Современные осциллографы позволяют разворачивать сигнал гигагерцовых частот. 
+			Для разворачивания более высокочастотных сигналов можно использовать электронно-оптические камеры.
+			</div>
+			<div style="margin-top: 30px;">
+			
+			<div><b>Деликат</b></div>
+			<div>р-к "Комсомольский"<br/>г. Тирасполь</div>
+			<div>тел: +37353336946</div>
+			<div>факс: +37353336946</div>
+			</div>
+			
+		</td>
+		<td  valign="top"><div id="map_canvas">asd</div></td>
+	</tr>
+</table>
+
+
+
+{% endblock %}
+
+

@@ -1,0 +1,86 @@
+﻿{% load pub_extras %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>{% block title %}Delikat web site{% endblock %}</title>
+<script type="text/javascript" src="{{MEDIA_URL}}jquery.js"></script>
+<link href="{{MEDIA_URL}}style.css" rel="stylesheet" type="text/css" media="screen" />
+<link rel="stylesheet" href="{{MEDIA_URL}}thickbox.css" type="text/css" media="screen" />
+{% block header %}{% endblock %}
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+
+</head>
+<body>
+<div class="outercontainer">
+	<div class="topbar">
+		<div class="logobox"><img src="{{MEDIA_URL}}images/logo.gif"/></div>
+		<div class="menubox">
+			<ul class="menulist">
+				<li class="menuitem"><a href="/">Домашняя</a></li>
+				<li class="menuitem"><a href="/ourshops/">Наши магазины</a></li>
+				<li class="menuitem"><a href="/aboutus/">О нас</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="lineafterbanner"></div>
+	<table>
+		<tr>
+			<td valign="top">
+				<div class="leftmenubox">
+					<div class="leftmenutitle  productlisttitle">Наши продукты</div>
+					{% autoescape off %}
+					<ul class="leftmenulist">
+						<li>
+							<h2><a href="/decorations/">Оформление</a></h2>
+							<ul>
+								<li>{{ OccasionList|show_link:"Wedding" }}</li>
+								<li>{{ OccasionList|show_link:"Birthday" }}</li>
+								<li>{{ OccasionList|show_link:"Anniversary" }}</li>
+								<li>{{ OccasionList|show_link:"Forkids" }}</li>
+								<li>{{ OccasionList|show_link:"Funny" }}</li>
+								<li>{{ OccasionList|show_link:"Portraits" }}</li>
+								
+							</ul>
+						</li>
+						<li><h2>{{ ProductCategoryList|show_link:"Bun" }}</h2></li>
+						<li><h2>{{ ProductCategoryList|show_link:"Cookies" }}</h2></li>
+						<li><h2>{{ ProductCategoryList|show_link:"Cake" }}</h2></li>
+						<li><h2>{{ ProductCategoryList|show_link:"Roll" }}</h2></li>
+						<li><h2>{{ ProductCategoryList|show_link:"Dough" }}</h2></li>
+					</ul>
+					{% endautoescape %}
+				</div>
+				
+				<div class="leftmenubox">
+					<div class="leftmenutitle  ourorderlisttitle">Сделать заказ</div>
+					{% autoescape off %}
+					<ul class="leftmenulist">
+						<li>
+							<h2>Сделайте заказ у нас</h2>
+							<ul>
+								<li>Выберите оформление которое вам понравилось</li>
+								<li>Выберите вид торта</li>
+								<li>Вышлете ваш заказ</li>
+								<li>Спасибо!</li>
+							</ul>
+						</li>
+
+					</ul>
+					{% endautoescape %}
+				</div>				
+			</td>
+			<td  valign="top">
+			<div class="content">
+				<div class="pagename">{% block page_title %}Добро пожаловать!!!{% endblock %}</div>
+			{% block content %}This is main content{% endblock %}
+			</div>
+			
+			</td>
+		</tr>
+	</table>
+</div>
+
+</html>

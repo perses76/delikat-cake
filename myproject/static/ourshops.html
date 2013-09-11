@@ -1,0 +1,84 @@
+﻿{% extends "base.html" %}
+
+{% block title %}Delikat - Our Shops{% endblock %}
+
+{% block page_title %}Наши магазины{% endblock %}
+
+{% block header %}
+<style>
+	.shopaddress{margin-bottom: 20px;}
+</style>
+<script type="text/javascript" src="{{MEDIA_URL}}jlightbox/js/jquery.lightbox-0.5.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}jlightbox/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript">
+$(function() {
+	$('a.lightbox').lightBox({
+	overlayBgColor: '#FFF',
+	overlayOpacity: 0.6,
+	imageLoading: '{{MEDIA_URL}}jlightbox/images/lightbox-ico-loading.gif',
+	imageBtnClose: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-close.gif',
+	imageBtnPrev: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-prev.gif',
+	imageBtnNext: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-next.gif',
+	imageBlank: '{{MEDIA_URL}}jlightbox/images/lightbox-blank.gif',
+	containerResizeSpeed: 350
+   }
+	); // Select all links with lightbox class
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<div>
+	<div>
+		<table border="0" width="100%">
+			<tr>
+				<td align="center">
+					<a href="{{MEDIA_URL}}butik1.jpg" class="lightbox" title="ТЦ. &quot;Причерноморье&quot; г. Тирасполь">
+						<img src="{{MEDIA_URL}}butik1.jpg" alt="" style="width: 150px; height: 100px" />
+					</a>
+					<div class="shopaddress">ТЦ. "Причерноморье"<br/>г. Тирасполь</div>
+				</td>
+				<td  align="center">
+					<a href="{{MEDIA_URL}}butik2.jpg" class="lightbox" title="р-к &quot;Комсомольский&quot; г. Тирасполь">
+						<img src="{{MEDIA_URL}}butik2.jpg" alt="" style="width: 150px; height: 100px" class="lightbox"/>
+					</a>
+					<div class="shopaddress">р-к "Комсомольский"<br/>г. Тирасполь</div>
+				</td>
+			</tr>
+			<tr>				
+				<td  align="center">
+					<a href="{{MEDIA_URL}}butik3.jpg" class="lightbox"  title="ТЦ. &quot;Клинцовский&quot; Бутик № 22 г. Тирасполь">
+						<img src="{{MEDIA_URL}}butik3.jpg" alt="" style="width: 150px; height: 100px" class="lightbox"/>
+					</a>
+					<div class="shopaddress">ТЦ "Клинцовский" Бутик № 22<br/> г. Тирасполь</div>
+				</td>
+				<td   align="center">
+					<a href="{{MEDIA_URL}}butik4.jpg" class="lightbox"  title="ТЦ. &quot;Западный&quot;  Бутик № 42 г. Тирасполь">
+						<img src="{{MEDIA_URL}}butik4.jpg" alt="" style="width: 150px; height: 100px" class="lightbox"/>
+					</a>
+					<div class="shopaddress">ТЦ "Западный" Бутик № 42<br/> г. Тирасполь</div>
+				</td>
+			</tr>
+			<tr>				
+				<td  align="center">
+					<a href="{{MEDIA_URL}}butik5.jpg" class="lightbox"  title="&quot;Охотный ряд&quot; Бутик № 4 г. Бендеры">
+						<img src="{{MEDIA_URL}}butik5.jpg" alt="" style="width: 150px; height: 100px" class="lightbox"/>
+					</a>
+					<div class="shopaddress">"Охотный ряд" Бутик № 42<br/> г. Бендеры</div>
+				</td>
+				<td  align="center">				
+					<a href="{{MEDIA_URL}}butik6.jpg" class="lightbox"  title="&quot;Центральный рынок&quot; г. Тирасполь">
+						<img src="{{MEDIA_URL}}butik6.jpg" alt="" style="width: 150px; height: 100px" class="lightbox"/>
+					</a>
+					<div class="shopaddress">Центральный рынок <br/>г. Тирасполь</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+
+
+{% endblock %}
+
+
