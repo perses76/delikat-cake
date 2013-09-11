@@ -5,27 +5,28 @@
 {% block page_title %}Ваш заказ{% endblock %}
 
 {% block header %}
-<script type="text/javascript" src="{{MEDIA_URL}}jlightbox/js/jquery.lightbox-0.5.pack.js"></script>
-<link rel="stylesheet" type="text/css" href="{{MEDIA_URL}}jlightbox/css/jquery.lightbox-0.5.css" media="screen" />
+<script type="text/javascript" src="{{STATIC_URL}}jlightbox/js/jquery.lightbox-0.5.pack.js"></script>
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}jlightbox/css/jquery.lightbox-0.5.css" media="screen" />
 <script type="text/javascript">
 $(function() {
 	$('a.lightbox').lightBox({
-	overlayBgColor: '#FFF',
-	overlayOpacity: 0.6,
-	imageLoading: '{{MEDIA_URL}}jlightbox/images/lightbox-ico-loading.gif',
-	imageBtnClose: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-close.gif',
-	imageBtnPrev: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-prev.gif',
-	imageBtnNext: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-next.gif',
-	imageBlank: '{{MEDIA_URL}}jlightbox/images/lightbox-blank.gif',
-	containerResizeSpeed: 350,
-   }
+        overlayBgColor: '#FFF',
+        overlayOpacity: 0.6,
+        imageLoading: '{{MEDIA_URL}}jlightbox/images/lightbox-ico-loading.gif',
+        imageBtnClose: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-close.gif',
+        imageBtnPrev: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-prev.gif',
+        imageBtnNext: '{{MEDIA_URL}}jlightbox/images/lightbox-btn-next.gif',
+        imageBlank: '{{MEDIA_URL}}jlightbox/images/lightbox-blank.gif',
+        containerResizeSpeed: 350
+       }
 	); // Select all links with lightbox class
+
 });
 </script>
 
-<link rel="stylesheet" href="{{MEDIA_URL}}jfromvalidator/css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8" />
-<script src="{{MEDIA_URL}}jfromvalidator/js/jquery.validationEngine-en.js" type="text/javascript"></script>
-<script src="{{MEDIA_URL}}jfromvalidator/js/jquery.validationEngine.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{{STATIC_URL}}jfromvalidator/css/validationEngine.jquery.css" type="text/css" media="screen" title="no title" charset="utf-8" />
+<script src="{{STATIC_URL}}jfromvalidator/js/jquery.validationEngine-en.js" type="text/javascript"></script>
+<script src="{{STATIC_URL}}jfromvalidator/js/jquery.validationEngine.js" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#form1").validationEngine()
@@ -33,12 +34,19 @@ $(document).ready(function() {
 	//alert($("#formID").validationEngine({returnIsValid:true}))
 	//$.validationEngine.buildPrompt("#date","This is an example","error")	 		 // Exterior prompt build example
 	//$.validationEngine.closePrompt(".formError",true) 							// CLOSE ALL OPEN PROMPTS
+    $("#id_decoration_ingredient").change(function (e) {
+        var obj_id = $(this).val();
+        var descr = "";
+        if (obj_id != "") descr = $("#decoration_ingredient_"+obj_id).html();
+        $("#id_TortNote").val(descr);
+    });
 });	
 </script>		
 {% endblock %}
 
 {% block content %}
 <form method="POST" action="" id="form1">{% csrf_token %}
+    {{ form.non_field_errors }}
 	<div class="sectiontitle">1. Оформление</div>
 	<table width="100%">
 		<tr><td>
@@ -50,20 +58,23 @@ $(document).ready(function() {
 		No decoration
 	{% endif %}
 			</td>
-			<td>{{form.DecorationNote}}</td>
+			<td>
+                {{ form.DecorationNote.errors }}
+                {{form.DecorationNote}}
+            </td>
 		</tr>
 	</table>
 	
-	<div class="sectiontitle">2. Торт</div>
+	<div class="sectiontitle">2. Состав</div>
 	<table width="100%">
-		<tr><td>
-	{% if order.decoration %}
-		<a href="{{order.decoration.photo.url}}"  class="lightbox">
-			<img src="{{order.decoration.photo.url_125x125}}" border="0"/>
-		</a>
-	{% else %}
-		No decoration
-	{% endif %}
+		<tr><td valign="top">
+        {{ form.DecorationIngredient.errors }}
+        {{ form.DecorationIngredient }}
+        <div style="display: none">
+            {% for it in decoration_ingredients%}
+                <div id='decoration_ingredient_{{ it.pk  }}'>{{ it.descr_ru }}</div>
+            {% endfor %}
+        </div>
 			</td>
 			<td>{{form.TortNote}}</td>
 		</tr>
@@ -71,11 +82,11 @@ $(document).ready(function() {
 
 	<div class="sectiontitle">3. Как с Вами связаться</div>
 	<table border="1" style="border-collapse: collapse;" class="addressbox" cellpadding="5" cellspacing="5">
-		<tr><td><label for="id_CustomerName">Введите ваше имя:</label></td><td align="left">{{form.CustomerName}}</td></tr>
-		<tr><td><label for="id_EMail">EMail:</label></td><td align="left">{{form.EMail}}</td></tr>
-		<tr><td><label for="id_Phone">Phone:</label></td><td align="left">{{form.Phone}}</td></tr>
-		<tr><td><label for="id_DeliveryAddress">Адрес:</label></td><td align="left">{{form.DeliveryAddress}}</td></tr>
-		<tr><td><label for="id_Note">Комментарий:</label></td><td align="left">{{form.Note}}</td></tr>
+		<tr><td><label for="id_CustomerName">Введите ваше имя:</label></td><td align="left">{{ form.CustomerName.errors }}{{form.CustomerName}}</td></tr>
+		<tr><td><label for="id_EMail">EMail:</label></td><td align="left">{{ form.EMail.errors }}{{form.EMail}}</td></tr>
+		<tr><td><label for="id_Phone">Phone:</label></td><td align="left">{{ form.Phone.errors }}{{form.Phone}}</td></tr>
+		<tr><td><label for="id_DeliveryAddress">Адрес:</label></td><td align="left">{{ form.DeliveryAddress.errors }}{{form.DeliveryAddress}}</td></tr>
+		<tr><td><label for="id_Note">Комментарий:</label></td><td align="left">{{ form.Note.errors }}{{form.Note}}</td></tr>
 	</table>
 	<input type="submit" name="btnSend" value="Send"/>
 </form>

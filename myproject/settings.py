@@ -1,6 +1,6 @@
 # Django settings for wadimcv project.
 import os
-
+import passwords
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -12,16 +12,19 @@ SOLUTION_DIR=os.path.abspath(os.path.join(PROJECT_DIR, ".."))
 
 EMAIL_HOST = 'smtp.webfaction.com'
 EMAIL_HOST_USER = 'delikat_website'
-EMAIL_HOST_PASSWORD = 'd745e357'
+EMAIL_HOST_PASSWORD = passwords.EMAIL_HOST_PASSWORD
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+SERVER_EMAIL = "website@delikat-cake.com"  # The 'From:' header of the e-mail for mail_admins and mail_managers methods
 
 
 ADMINS = (
     ('wadim', 'wadim@veles-soft.com'),
 )
 
-MANAGERS = ADMINS
+MANAGERS = ADMINS + (
+    ('Oleg Ovcearenco', 'oleg.ovcearenco@gmail.com'),
+)
 
 
 DATABASES = {

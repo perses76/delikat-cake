@@ -1,16 +1,20 @@
-﻿from django.http import HttpResponse
+﻿from django.core.urlresolvers import reverse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.views.generic.simple import direct_to_template
 from django.core.mail import send_mail
 
-from models import Decoration, ProductCategory, DecorationCategory
+from models import Decoration, ProductCategory, DecorationCategory, DecorationIngredient
 from OrderRequestLib import OrderRequest
 from forms import ContactForm
 
 
 # Create your views here.
+from myproject.pub import utils
+
+
 def base_proc(request):
     
     return {
@@ -22,32 +26,45 @@ def base_proc(request):
     
 def hello(request):
     return HttpResponse("Hello world")
-    
+
+
 def index(request):
     return render_to_response("index.html", {}, context_instance=RequestContext(request, processors=[base_proc]))
 
+
 def base(request):
     return render_to_response("base.html", {}, context_instance=RequestContext(request, processors=[base_proc]))
-    
+
+
+def mail_sent_confirmation(request):
+    return render_to_response("mail_sent_confirmation.html", {}, context_instance=RequestContext(request, processors=[base_proc]))
+
+
 def makeorder(request):
     order=OrderRequest(request)
     if request.method == 'POST':
         form = ContactForm(request.POST)
         if form.is_valid():
-            cd = form.cleaned_data
-            send_mail(
-                "New Order",
-                "Body",
-                "website@delikat-cake.com",
-                ['webadmin@delikat-cake.com'],
-                fail_silently=False
-            )
-            print "Mail sent"
+            try:
+                cd = form.cleaned_data
+                cd["decoration_id"] = order.decorationId
+                if cd["DecorationIngredient"]:
+                    cd["decoration_ingredient_name"] = DecorationIngredient.objects.get(pk=cd["DecorationIngredient"]).title_ru
+                utils.send_order_email(cd)
+                return HttpResponseRedirect(reverse("mail_sent_confirmation"))
+                print "Mail sent"
+            except Exception as ex:
+                form._errors["__all__"] = form.error_class([str(ex)])
+                print "Error in mail sending!!!"
+
         else:
-            print "Mail is not valid"
+            print "data is not valid", form.errors
     else:
         form = ContactForm()
-    response=render_to_response("makeorder.html", {"order" : order, "form" : form}, context_instance=RequestContext(request, processors=[base_proc]))
+
+    data = {"order": order, "form": form, "decoration_ingredients": DecorationIngredient.objects.all()}
+
+    response=render_to_response("makeorder.html", data, context_instance=RequestContext(request, processors=[base_proc]))
     #order.save(response)
     return response
 

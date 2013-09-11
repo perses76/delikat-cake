@@ -1,8 +1,7 @@
 ﻿from django.db import models
 from extimagefield import ExtImageField
-from widgets import AdminImageWidget
-from django import forms
-    
+
+
 class ProductCategory(models.Model):
     title_en=models.CharField(max_length=200, verbose_name='Название (EN)')
     title_ru=models.CharField(max_length=200, verbose_name='Название (RU)')
@@ -14,7 +13,8 @@ class ProductCategory(models.Model):
     class Meta:
         verbose_name = "Категория продукта"
         verbose_name_plural = "Категории продуктов"        
-    
+
+
 class DecorationCategory(models.Model):
     title_en=models.CharField(max_length=200, verbose_name='Название (EN)')
     title_ru=models.CharField(max_length=200, verbose_name='Название (RU)')
@@ -27,6 +27,7 @@ class DecorationCategory(models.Model):
         verbose_name = "Категория оформления"
         verbose_name_plural = "Категории оформления"                
 
+
 class DecorationIngredient(models.Model):
     title_en=models.CharField(max_length=200, verbose_name='Название (EN)')
     title_ru=models.CharField(max_length=200, verbose_name='Название (RU)')
@@ -37,6 +38,7 @@ class DecorationIngredient(models.Model):
     class Meta:
         verbose_name = "Состав торта"
         verbose_name_plural = "Составы тортов"        
+
 
 class Product(models.Model):
     title_en = models.CharField(max_length=200, verbose_name='Название (EN)')
@@ -53,6 +55,7 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Продукт"
         verbose_name_plural = "Продуты"        
+
 
 class Decoration(models.Model):
     code = models.CharField(max_length=200, verbose_name='Код')
