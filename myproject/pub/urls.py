@@ -14,6 +14,7 @@ urlpatterns = patterns('',
     (r'^products/(?P<slug>[\w|-]+)/$', views.products),
     (r'^ourshops/$', views.genericview, {'page': 'ourshops.html'}),
     (r'^aboutus/$', views.genericview, {'page': 'aboutus.html'}),
+    (r'^contacts/$', views.genericview, {'page': 'contacts.html'}),
     (r'^makeorder/$', views.makeorder),
     url(r'^mail_sent/$', views.mail_sent_confirmation, name="mail_sent_confirmation"),
 )

@@ -4,7 +4,7 @@ a {text-decoration: none;}
 .topbar{height: 126px; background: url(images/topbanner.jpg) no-repeat bottom right; position: relative;}
 .logobox {position: absolute; top: 5px; left: 30px;}
 
-.menubox{position: absolute; top: 100px; left: 620px;}
+.menubox{position: absolute; top: 100px; left: 520px;}
 .menulist {list-style-type: none;  }
 .menulist li {float: left; background-color: #383838; padding: 3px 5px 3px 5px; color: white; border-right: solid 1px white;}
 .menulist a {color: white;}
