@@ -4,7 +4,7 @@ a {text-decoration: none;}
 .topbar{height: 126px; background: url(images/topbanner.jpg) no-repeat bottom right; position: relative;}
 .logobox {position: absolute; top: 5px; left: 30px;}
 
-.menubox{position: absolute; top: 100px; left: 520px;}
+.menubox{position: absolute; top: 100px; left: 620px;}
 .menulist {list-style-type: none;  }
 .menulist li {float: left; background-color: #383838; padding: 3px 5px 3px 5px; color: white; border-right: solid 1px white;}
 .menulist a {color: white;}
@@ -18,8 +18,8 @@ a {text-decoration: none;}
 .leftmenulist li {background-color: none; padding: 3px 5px 3px 5px;  margin-left: 10px; color: #838895;}
 .leftmenulist li a {color: #838895;}
 .leftmenulist ul{list-style-type: none;  list-style-image: url(images/productmarker.gif)}
-.leftmenulist li  ul li{background-color: none; padding: 3px 5px 3px 5px; border-right: solid 1px white; margin-left: 10px; color: #ebc02f;}
-.leftmenulist li ul li a {color: #ebc02f;}
+.leftmenulist li  ul li{background-color: none; padding: 3px 5px 3px 5px; border-right: solid 1px white; margin-left: 10px; color: #838895;}
+.leftmenulist li ul li a {color: #838895;}
 
 .productlisttitle{background-image: url('images/menuCake1.png'); background-repeat: no-repeat;}
 .ourorderlisttitle{background-image: url('images/menuCake2.png'); background-repeat: no-repeat;}
@@ -53,7 +53,7 @@ a {text-decoration: none;}
 
 /*makeorder.html start*/
 	.sectiontitle{ color: #07349a; text-align: left; font-size: 15px; margin: 10px 0px 10px 10px; font-weight: bold; padding-left: 0px;}
-	.notebox{width: 90%; height: 100px; background-color: #F3F4F5; color: #A0A7AD; }
+	.notebox{width: 90%; height: 100px; background-color: #F3F4F5; }
 	.inputctrl{background-color: #F3F4F5;}
 	.addressbox{margin-left: 30px;}
 	.addressbox td {padding: 3px;}

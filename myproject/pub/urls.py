@@ -5,7 +5,7 @@ from myproject.pub import views
 #import settings
 
 urlpatterns = patterns('',
-    (r'^$', views.genericview, {'page': 'under_construction.html'}),
+    (r'^$', views.index),
     (r'^index/$', views.index),
     (r'^hello/$', views.hello),
     (r'^base/$', views.base),
@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     (r'^products/(?P<slug>[\w|-]+)/$', views.products),
     (r'^ourshops/$', views.genericview, {'page': 'ourshops.html'}),
     (r'^aboutus/$', views.genericview, {'page': 'aboutus.html'}),
-    (r'^contacts/$', views.genericview, {'page': 'contacts.html'}),
+    (r'^help/$', views.genericview, {'page': 'help.html'}),
     (r'^makeorder/$', views.makeorder),
     url(r'^mail_sent/$', views.mail_sent_confirmation, name="mail_sent_confirmation"),
 )

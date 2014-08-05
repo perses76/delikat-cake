@@ -7,7 +7,7 @@
 <title>{% block title %}Delikat web site{% endblock %}</title>
 <link rel="shortcut icon" type="image/x-icon"  href="{{STATIC_URL}}favicon.ico">
 <script type="text/javascript" src="{{STATIC_URL}}jquery.js"></script>
-<link href="{{STATIC_URL}}style.css" rel="stylesheet" type="text/css" media="screen" />
+<link href="{{STATIC_URL}}style.css?test=1" rel="stylesheet" type="text/css" media="screen" />
 <link rel="stylesheet" href="{{STATIC_URL}}thickbox.css" type="text/css" media="screen" />
 {% block header %}{% endblock %}
 <meta name="keywords" content="" />
@@ -21,9 +21,8 @@
 		<div class="menubox">
 			<ul class="menulist">
 				<li class="menuitem"><a href="/">Домашняя</a></li>
-				<li class="menuitem"><a href="/ourshops/">Наши магазины</a></li>
 				<li class="menuitem"><a href="/aboutus/">О нас</a></li>
-				<li class="menuitem"><a href="/contacts/">Контакты</a></li>
+				<li class="menuitem"><a href="/help/">Помощь</a></li>
 			</ul>
 		</div>
 	</div>
@@ -49,20 +48,23 @@
 				</div>
 				
 				<div class="leftmenubox">
-					<div class="leftmenutitle  ourorderlisttitle">Сделать заказ</div>
+					<div class="leftmenutitle  ourorderlisttitle" style="text-align: left;">Контакты</div>
 					{% autoescape off %}
-					<ul class="leftmenulist">
-						<li>
-							<h2>Сделайте заказ у нас</h2>
-							<ul>
-								<li>Выберите оформление которое вам понравилось</li>
-								<li>Выберите вид торта</li>
-								<li>Вышлете ваш заказ</li>
-								<li>Спасибо!</li>
-							</ul>
-						</li>
+							<div>
+							г.Тирасполь
+							</div>
 
-					</ul>
+							<div>
+							ул. Энергетико,97
+							</div>
+
+							<div>
+							тел: (0533) 55811
+							</div>
+
+							<div>
+							тел: (0533) 88111
+							</div>
 					{% endautoescape %}
 				</div>				
 			</td>

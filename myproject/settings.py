@@ -23,7 +23,7 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS + (
-    ('Oleg Ovcearenco', 'oleg.ovcearenco@gmail.com'),
+    ('Oleg Ovcearenco', 'oleg.ovcearenco@gmail.com'), ('Delikat Info', 'info@delikat-cake.com'), 
 )
 
 
