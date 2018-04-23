@@ -58,3 +58,32 @@ a {text-decoration: none;}
 	.addressbox{margin-left: 30px;}
 	.addressbox td {padding: 3px;}
 /*makeorder.html end*/
+
+
+/* aboutus.html start */
+.aboutus h2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.aboutus .invite ul li {
+    margin-left: 30px;
+
+}
+.aboutus .invite p {
+    margin-top: 30px;
+
+}
+
+.aboutus .our_shops h3 {
+    margin-top: 0px;
+}
+
+.aboutus .our_shops ul li {
+    margin-top: 0px;
+    list-style-type: none;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* aboutus.html end*/
